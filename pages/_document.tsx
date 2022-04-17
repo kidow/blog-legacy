@@ -34,6 +34,7 @@ export default class MyDocument extends Document {
             sizes="16x16"
             href="favicons/favicon-16x16.png"
           />
+          <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
           <link
             rel="stylesheet"

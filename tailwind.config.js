@@ -1,3 +1,4 @@
+/** @type {import("@types/tailwindcss/tailwind-config").TailwindConfig } */
 module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -6,5 +7,10 @@ module.exports = {
   theme: {
     extend: {}
   },
-  plugins: []
+  plugins: [
+    require('prettier-plugin-tailwindcss'),
+    require('tailwind-scrollbar-hide'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp')
+  ]
 }
