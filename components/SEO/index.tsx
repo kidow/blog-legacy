@@ -13,7 +13,7 @@ interface Props {
 
 const SEO: FC<Props> = ({
   title,
-  description = '더 게을러지기 위해, 더 부지런히 공부하는 개발자입니다.',
+  description = '더 게으르기 위해, 더 부지런히 공부하는 개발자입니다.',
   image = '',
   ldJson,
   noSEO = false

@@ -1,4 +1,5 @@
-import { Post, SEO } from 'components'
+import { Footer, Logo, Post, SEO } from 'components'
+import Link from 'next/link'
 import { useEffect } from 'react'
 import { supabase, useObjectState } from 'services'
 
@@ -25,16 +26,32 @@ const HomePage = () => {
     <>
       <SEO />
 
-      <div className="container mx-auto">
-        <div className="px-6">
-          <header className="flex items-center justify-center py-8 md:py-10">
-            Kidow
+      <div className="container mx-auto max-w-xs">
+        <div className="px-6 py-8 md:py-10">
+          <header className="flex items-center justify-between text-sm text-neutral-500">
+            <Link href="https://resume.kidow.me">
+              <a
+                target="_blank"
+                className="hover:text-neutral-400 hover:underline"
+              >
+                Résumé
+              </a>
+            </Link>
+            <Logo className="h-6 fill-neutral-50" />
+            <Link href="https://github.com/kidow">
+              <a
+                target="_blank"
+                className="hover:text-neutral-400 hover:underline"
+              >
+                Github
+              </a>
+            </Link>
           </header>
         </div>
       </div>
 
       <div className="container mx-auto min-h-screen">
-        <div className="px-6">
+        <div className="px-6 pb-20">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {list.map((item) => (
               <Post
@@ -48,6 +65,8 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   )
 }
