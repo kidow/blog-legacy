@@ -14,26 +14,31 @@ export default class MyDocument extends Document {
     return (
       <Html lang="ko" dir="ltr">
         <Head>
-          <meta charSet="utf-8" />
-          <meta name="theme-color" content="#000" />
+          <meta name="theme-color" content="#19191C" />
           <meta name="robots" content="index, follow" />
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="favicons/apple-icon-180x180.png"
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
           />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="favicons/favicon-32x32.png"
+          <meta
+            name="keywords"
+            content="blog, developer, javascript, typescript, react, tailwindcss, github, nextjs"
           />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="favicons/favicon-16x16.png"
+          <meta name="author" content="김동욱" />
+          <meta
+            name="google-site-verification"
+            content="sbzpJiDpgeXijDrNF1qHG4W4P1DpMlpEuS-ztOQm0EU"
           />
+          <meta
+            name="naver-site-verification"
+            content="b13059f284b5b3364c6329f2865cfc317cf5fd6c"
+          />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="600" />
+          <meta property="og:locale" content="ko_KR" />
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="Web Developer Kidow's Blog" />
+          <meta property="twitter:card" content="summary_large_image" />
           <link rel="icon" href="/favicon.ico" />
           <link rel="manifest" href="/manifest.json" />
           <link
@@ -41,7 +46,7 @@ export default class MyDocument extends Document {
             type="text/css"
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
           />
-          <meta name="msapplication-TileColor" content="#000" />
+          <meta name="msapplication-TileColor" content="#19191C" />
         </Head>
         <body>
           <Main />

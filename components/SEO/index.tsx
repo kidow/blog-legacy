@@ -14,12 +14,12 @@ interface Props {
 const SEO: FC<Props> = ({
   title,
   description = '더 게으르기 위해, 더 부지런히 공부하는 개발자입니다.',
-  image = '',
+  image = 'https://opengraph.kidow.me/api?id=rxzt4zk0v4o',
   ldJson,
   noSEO = false
 }) => {
   const { asPath } = useRouter()
-  const TITLE = title ? `${title} - Kidow` : 'Kidow'
+  const TITLE = title ? `${title} - Kidow` : 'Kidow Blog'
   const URL = 'https://blog.kidow.me' + decodeURI(asPath)
   if (ldJson) ldJson['@context'] = 'https://schema.org'
   if (noSEO)
@@ -31,16 +31,19 @@ const SEO: FC<Props> = ({
   return (
     <Head>
       <title>{TITLE}</title>
+      <link rel="canonical" href={URL} />
       <meta name="description" content={description} />
-      <meta name="keywords" content="keywords" />
+
       <meta property="og:title" content={TITLE} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={URL} />
       <meta property="og:image" content={image} />
+
       <meta property="twitter:title" content={TITLE} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />
       <meta property="twitter:domain" content={URL} />
+
       {ldJson && (
         <script type="application/ld+json">{JSON.stringify(ldJson)}</script>
       )}
