@@ -37,7 +37,7 @@ const HomePage = () => {
                 Résumé
               </a>
             </Link>
-            <Logo className="h-6 fill-neutral-50" />
+            <Logo className="h-7 fill-neutral-50" />
             <Link href="https://github.com/kidow">
               <a
                 target="_blank"

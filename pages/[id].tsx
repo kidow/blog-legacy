@@ -35,7 +35,7 @@ const IdPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
             </Link>
             <Link href="/">
               <a>
-                <Logo className="h-6 fill-neutral-50" />
+                <Logo className="h-7 fill-neutral-50" />
               </a>
             </Link>
             <Link href="https://github.com/kidow">
