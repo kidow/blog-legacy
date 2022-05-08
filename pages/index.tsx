@@ -1,27 +1,14 @@
 import { Footer, Logo, Post, SEO } from 'components'
 import Link from 'next/link'
-import { useEffect } from 'react'
-import { supabase, useObjectState } from 'services'
+import { supabase } from 'services'
+import { markdownToTxt } from 'markdown-to-txt'
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 
-interface State {
-  list: IPost[]
-}
+interface State {}
 
-const HomePage = () => {
-  const [{ list }, setState] = useObjectState<State>({ list: [] })
-
-  const get = async () => {
-    const { data, error } = await supabase.from<IPost>('posts').select('*')
-    if (error) {
-      console.error(error)
-      return
-    }
-    setState({ list: data })
-  }
-
-  useEffect(() => {
-    get()
-  }, [])
+const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
+  list
+}) => {
   return (
     <>
       <SEO />
@@ -69,6 +56,29 @@ const HomePage = () => {
       <Footer />
     </>
   )
+}
+
+export const getStaticProps: GetStaticProps<{ list: IPost[] }> = async () => {
+  const { data, error } = await supabase
+    .from<IPost>('posts')
+    .select('*')
+    .match({ is_inactivated: false })
+  if (error) {
+    console.error(error)
+    return { props: { list: [] } }
+  }
+  return {
+    props: {
+      list: data.map((item) => {
+        const content = markdownToTxt(item.content)
+        return {
+          ...item,
+          content:
+            content.length > 140 ? `${content.substring(0, 140)}...` : content
+        }
+      })
+    }
+  }
 }
 
 export default HomePage

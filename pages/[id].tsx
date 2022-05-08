@@ -8,6 +8,7 @@ import { htmlToText, supabase } from 'services'
 import dayjs from 'dayjs'
 import { BackTop, Footer, Logo, SEO } from 'components'
 import Link from 'next/link'
+import Markdown from 'react-markdown'
 
 interface State {}
 
@@ -57,8 +58,8 @@ const IdPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </div>
 
       <div className="container mx-auto min-h-screen max-w-screen-md">
-        <div className="prose prose-neutral px-6 md:prose-lg">
-          {data.content}
+        <div className="prose prose-invert px-6 md:prose-lg">
+          <Markdown>{data.content}</Markdown>
         </div>
       </div>
 
