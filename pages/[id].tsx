@@ -58,7 +58,7 @@ const IdPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       </div>
 
       <div className="container mx-auto min-h-screen max-w-screen-md">
-        <div className="prose prose-invert px-6 md:prose-lg">
+        <div className="prose-sm prose-invert px-6 md:prose-base">
           <Markdown>{data.content}</Markdown>
         </div>
       </div>
