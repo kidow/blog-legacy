@@ -1,5 +1,4 @@
 export { default as SEO } from './SEO'
-export { default as Post } from './Post'
 export { default as Footer } from './Footer'
 export { default as Logo } from './Logo'
 export { default as BackTop } from './BackTop'

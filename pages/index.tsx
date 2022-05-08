@@ -1,8 +1,11 @@
-import { Footer, Logo, Post, SEO } from 'components'
+import { Footer, Logo, SEO } from 'components'
 import Link from 'next/link'
-import { supabase } from 'services'
+import { htmlToText, supabase } from 'services'
 import { markdownToTxt } from 'markdown-to-txt'
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
 
 interface State {}
 
@@ -41,13 +44,19 @@ const HomePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
         <div className="px-6 pb-20">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {list.map((item) => (
-              <Post
-                key={item.id}
-                id={item.id}
-                title={item.title}
-                content={item.content}
-                created_at={item.created_at}
-              />
+              <Link key={item.id} href={`/${item.id}`}>
+                <a className="group">
+                  <h2 className="line-clamp-1 group-hover:underline md:text-lg md:line-clamp-2">
+                    {item.title}
+                  </h2>
+                  <p className="mt-2.5 text-sm text-neutral-500 line-clamp-3 md:text-base">
+                    {htmlToText(item.content).content}
+                  </p>
+                  <div className="mt-2 text-sm text-neutral-300">
+                    {dayjs(item.created_at).locale('ko').fromNow()}
+                  </div>
+                </a>
+              </Link>
             ))}
           </div>
         </div>
